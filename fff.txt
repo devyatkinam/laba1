@@ -1,0 +1,52 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+    double x;
+    double e;
+    int k;
+
+ 
+    cout << "Введите x от -1 до 1: ";
+    cin >> x;
+    cout << "Введите k > 1: ";
+    cin >> k;
+
+   
+    if (k <= 1 || x<=-1 || x>=1) {
+        cout << "неправильное значение" << endl;
+        return 0;
+    }
+
+    double result = 0.0;
+    double sum = x;
+    int n = 1;
+
+    while (fabs(sum) >= pow(10, -k)) {
+        result += sum;
+        sum *= (x * x * 2) / ((2 * n) * (2 * n + 1));
+        n++;
+    }
+
+  
+    result *= 2;
+
+   
+    double result2 = log((1 + x) / (1 - x));
+
+    
+    cout.precision(k + 1);
+    cout << "Приближенное значение ряда Тейлора: " << result << endl;
+    cout << "Значение с помощью стандартной функции: " << result2 << endl;
+  
+    if (result > result2) {
+        cout << "Приближенное значение ряда Тейлора больше значения с помощью стандартной функции на " << result - result2;
+    }
+    else
+        cout << "Приближенное значение ряда Тейлора меньше значения с помощью стандартной функции на " << result2 - result;
+
+    return 0;
+}
