@@ -22,8 +22,8 @@ int main() {
     }
 
     double result = 0.0;
-    double sum = x;
-    int n = 0;
+    double sum =x;
+    int n = 1;
 
     while (fabs(sum) >= pow(10, -k)) {
         result += sum;
